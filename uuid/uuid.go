@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"fmt"
 	"io"
+	"time"
 )
 
 func UUID() (string, error) {
@@ -30,4 +31,8 @@ func ShortUUID(prefix ...string) (uuid string) {
 		uuid = fmt.Sprintf("id_%X%X", b[0:4], b[4:6])
 	}
 	return
+}
+
+func UniqueNumber() (uuid int64) {
+	return time.Now().UnixNano() / (1 << 22)
 }
